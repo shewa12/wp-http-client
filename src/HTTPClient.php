@@ -94,6 +94,32 @@ class HTTPClient {
 	}
 
 	/**
+	 * Make a PATCH request
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $url URL to request.
+	 * @param array  $data Data to patch.
+	 * @param array  $args arguments for the request.
+	 *
+	 * @return array|WP_Error Response data or WP_Error on failure.
+	 */
+	public function patch( $url, $data, array $args = array() ) {
+		// Add body & method elements to the arguments.
+		$this->arguments['body']   = $data;
+		$this->arguments['method'] = 'PATCH';
+
+		$args = wp_parse_args( $args, $this->arguments );
+
+		$response = wp_remote_request(
+			$url,
+			$args
+		);
+
+		return $this->handle_response( $response );
+	}
+
+	/**
 	 * Make a DELETE request
 	 *
 	 * @since 1.0.0
