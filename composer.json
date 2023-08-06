@@ -1,0 +1,20 @@
+{
+    "name": "shewa/wp-http-client",
+    "description": "A wrapper class for making HTTP requests using WordPress wp_remote_request API's.",
+    "homepage": "https://github.com/shewa12/wp-http-client",
+    "keywords": [
+        "http_client",
+        "wp_remote_request"
+    ],
+    "authors": [
+        {
+            "name": "Shaikh Ahmed Shewa",
+            "email": "shewa12kpi@gmail.com",
+            "role": "Software Engineer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "license": "BSD-3-Clause"
+}
