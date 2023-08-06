@@ -49,16 +49,20 @@ $http_client = new HTTPClient();
 - PATCH
 - DELETE
 
-#### Usage of GET Method
 
-This method performs a GET request to the specified URL.
-- $url (string): The URL to request.
-- $args (array): Optional. Arguments for the request, such as headers, timeout, etc. (Default: empty array)
+## Usage
 
-Example of using get() method:
+request() method is responsible for performing http request. This method four params, body & arguments are optional:
+
+- $request, required. Which request need to make. Supported values: get, post, put, patch, delete.
+- $url, required. Where to make request
+- $data required if request is not get or delete
+- $args optional, pass to override default values
+
+Example of get request:
 ```
     $url = 'https://api.example.com/data';
-    $response = $http_client->get( $url );
+    $response = $http_client->request( 'get', $url );
 
     if ( ! is_wp_error( $response ) ) {
         // Process the response data
@@ -70,51 +74,18 @@ Example of using get() method:
 
 ```
 
-### Usage of POST, PUT, PATCH Method
-
-POST, PUT, PATCH method performs in a similar fashion.
-
-- $url (string): The URL to request.
-- $data (array): Data to be sent in the request body.
-- $args (array): Optional. Arguments for the request, such as headers, timeout, etc. (Default: empty array)
-
-Example of using post(), put(), patch() methods:
+Example of post request:
 ```
-$url = 'https://api.example.com/update/123';
-$data = array(
-    'name' => 'Updated Name',
-);
+    $url = 'https://api.example.com/data';
+	$data = ['name' => 'John'];
+    $response = $http_client->request( 'post', $url, $data );
 
-$response = $http_client->put( $url, $data );
-
-if ( ! is_wp_error( $response ) ) {
-    // Process the response data
-    print_r( $response );
-} else {
-    // Handle the error
-    echo 'Error: ' . $response->get_error_message();
-}
-
-```
-
-### Usage of DELETE Method
-
-- $url (string): The URL to request.
-- $args (array): Optional. Arguments for the request, such as headers, timeout, etc. (Default: empty array)
-
-Example of using delete() method:
-
-```
-$url = 'https://api.example.com/delete/123';
-
-$response = $http_client->delete( $url );
-
-if ( ! is_wp_error( $response ) ) {
-    // Process the response data
-    print_r( $response );
-} else {
-    // Handle the error
-    echo 'Error: ' . $response->get_error_message();
-}
+    if ( ! is_wp_error( $response ) ) {
+        // Process the response data
+        print_r( $response );
+    } else {
+        // Handle the error
+        echo 'Error: ' . $response->get_error_message();
+    }
 
 ```

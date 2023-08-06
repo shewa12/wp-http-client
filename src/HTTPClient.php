@@ -12,6 +12,8 @@
 
 namespace Shewa\WP_HTTP_Client;
 
+use WP_Error;
+
 /**
  * HttpClient class
  */
@@ -28,6 +30,35 @@ class HTTPClient {
 			'Content-Type: application/x-www-form-urlencoded',
 		),
 	);
+
+	/**
+	 * A wrapper method of get, post, put, patch, delete
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $request request verb.
+	 * @param string $url url.
+	 * @param array  $data optional or get, delete.
+	 * @param array  $args optional arguments.
+	 *
+	 * @return mixed array|WP_Error
+	 */
+	public function request( string $request, string $url, array $data = array(), array $args = array() ) {
+		$request = strtolower( $request );
+		if ( 'post' === $request ) {
+			$this->post( $url, $data, $args );
+		} else if ( 'put' === $request ) {
+			$this->put( $url, $data, $args );
+		} else if ( 'patch' === $request ) {
+			$this->patch( $url, $data, $args );
+		} else if ( 'delete' === $request ) {
+			$this->delete( $url, $args );
+		} else if ( 'get' === $request ) {
+			$this->get( $url, $args );
+		} else {
+			throw new WP_Error( 400, 'Bad Request' );
+		}
+	}
 
 	/**
 	 * Make a GET request
