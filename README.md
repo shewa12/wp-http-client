@@ -4,7 +4,14 @@ The `HTTPClient` class is a PHP class designed to make HTTP requests using the W
 
 ## Installation
 
-To use the `HTTPClient` class, you need to include the file containing the class in your WordPress project. You can either manually include the file or use an autoloader if you have one set up for your project.
+```
+git clone on the root directory
+```
+
+```
+cd wp-http-client
+composer install
+```
 
 ## Instantiating the HTTPClient Class
 
