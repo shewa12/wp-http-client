@@ -4,14 +4,7 @@ The `HTTPClient` class is a PHP class designed to make HTTP requests using the W
 
 ## Installation
 
-```
-git clone on the root directory
-```
-
-```
-cd wp-http-client
-composer install
-```
+``` composer require shewa12/wp-http-client ```
 
 ## Instantiating the HTTPClient Class
 
