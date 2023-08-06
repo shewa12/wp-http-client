@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Shewa\\WP_HTTP_Client\\": "wp-http-client/"
+            "Shewa\\WP_HTTP_Client\\": "src/"
         }
     },
     "license": "BSD-3-Clause"
