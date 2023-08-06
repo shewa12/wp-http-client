@@ -11,6 +11,8 @@ To use the `HTTPClient` class, you need to include the file containing the class
 To use the `HTTPClient` class, create an instance of it as follows:
 
 ```php
+//require PATH_TO . '/vendor/autoload.php';
+
 use Shewa\WP_HTTP_Client\HTTPClient;
 
 // Instantiate the HTTPClient class
