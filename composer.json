@@ -1,5 +1,5 @@
 {
-    "name": "shewa/wp-http-client",
+    "name": "shewa12/wp-http-client",
     "description": "A wrapper class for making HTTP requests using WordPress wp_remote_request API's.",
     "homepage": "https://github.com/shewa12/wp-http-client",
     "keywords": [
