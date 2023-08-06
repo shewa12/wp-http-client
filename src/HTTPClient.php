@@ -41,22 +41,24 @@ class HTTPClient {
 	 * @param array  $data optional or get, delete.
 	 * @param array  $args optional arguments.
 	 *
+	 * @throws WP_Error if request is not allowed
+	 *
 	 * @return mixed array|WP_Error
 	 */
 	public function request( string $request, string $url, array $data = array(), array $args = array() ) {
 		$request = strtolower( $request );
 		if ( 'post' === $request ) {
-			$this->post( $url, $data, $args );
+			return $this->post( $url, $data, $args );
 		} else if ( 'put' === $request ) {
-			$this->put( $url, $data, $args );
+			return $this->put( $url, $data, $args );
 		} else if ( 'patch' === $request ) {
-			$this->patch( $url, $data, $args );
+			return $this->patch( $url, $data, $args );
 		} else if ( 'delete' === $request ) {
-			$this->delete( $url, $args );
+			return $this->delete( $url, $args );
 		} else if ( 'get' === $request ) {
-			$this->get( $url, $args );
+			return $this->get( $url, $args );
 		} else {
-			throw new WP_Error( 400, 'Bad Request' );
+			return new WP_Error( 400, 'Bad Request' );
 		}
 	}
 
@@ -184,14 +186,12 @@ class HTTPClient {
 			return $response;
 		}
 
-		$data = json_decode( wp_remote_retrieve_body( $response ), true );
-		if ( $data && ! is_wp_error( $data ) ) {
-			return $data;
-		}
-
-		return new \WP_Error(
-			'invalid_response',
-			'The response from the request was invalid.'
+		$response = array(
+			'headers' => wp_remote_retrieve_headers( $response ),
+			'code'    => wp_remote_retrieve_response_code( $response ),
+			'message' => wp_remote_retrieve_response_message( $response ),
+			'body'    => json_decode( wp_remote_retrieve_body( $response ) ),
 		);
+		return $response;
 	}
 }

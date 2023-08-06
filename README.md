@@ -89,3 +89,17 @@ Example of post request:
     }
 
 ```
+
+## Response
+
+Response will be either WP_Error or Array. 
+
+Successful response will return array like below:
+```
+		$response = array(
+			'headers' => [],
+			'code'    => 200,
+			'message' => 'OK',
+			'body'    => [],
+		);
+```
