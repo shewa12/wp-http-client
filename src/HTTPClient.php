@@ -10,7 +10,7 @@
  * @since   1.0.0
  */
 
-namespace Shewa\WP_HTTP_CLIENT;
+namespace Shewa\WP_HTTP_Client;
 
 /**
  * HttpClient class
