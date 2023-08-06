@@ -21,42 +21,9 @@ use Shewa\WP_HTTP_Client\HTTPClient;
 $http_client = new HTTPClient();
 ```
 
-## Supported HTTP Arguments & Default Values
-
-```
-		$defaults = array(
-			'method'              => 'GET',
-			'timeout'             => 5,
-			'redirection'         => 5,
-			'httpversion'         => 1.0,
-			'user-agent'          => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' )',
-			'reject_unsafe_urls'  => false,
-			'blocking'            => true,
-			'headers'             => array(),
-			'cookies'             => array(),
-			'body'                => null,
-			'compress'            => false,
-			'decompress'          => true,
-			'sslverify'           => true,
-			'sslcertificates'     => ABSPATH . WPINC . '/certificates/ca-bundle.crt',
-			'stream'              => false,
-			'filename'            => null,
-			'limit_response_size' => null,
-		);
-```
-
-## Methods
-- REQUEST
-- GET
-- POST
-- PUT
-- PATCH
-- DELETE
-
-
 ## Usage
 
-request() method is responsible for performing http requests. This method accept four params. These are:
+`request()` method is responsible for performing http requests. This method accept four params. These are:
 
 - $request, required. Which request need to make. Supported values: get, post, put, patch, delete.
 - $url, required. Where to make request
@@ -105,5 +72,37 @@ Successful response will return array like below:
 			'code'    => 200,
 			'message' => 'OK',
 			'body'    => [],
+		);
+```
+
+## Methods
+- REQUEST
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
+
+## Supported HTTP Arguments & Default Values
+
+```
+		$defaults = array(
+			'method'              => 'GET',
+			'timeout'             => 5,
+			'redirection'         => 5,
+			'httpversion'         => 1.0,
+			'user-agent'          => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' )',
+			'reject_unsafe_urls'  => false,
+			'blocking'            => true,
+			'headers'             => array(),
+			'cookies'             => array(),
+			'body'                => null,
+			'compress'            => false,
+			'decompress'          => true,
+			'sslverify'           => true,
+			'sslcertificates'     => ABSPATH . WPINC . '/certificates/ca-bundle.crt',
+			'stream'              => false,
+			'filename'            => null,
+			'limit_response_size' => null,
 		);
 ```
