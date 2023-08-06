@@ -52,7 +52,7 @@ $http_client = new HTTPClient();
 
 ## Usage
 
-request() method is responsible for performing http request. This method four params, body & arguments are optional:
+request() method is responsible for performing http requests. This method accept four params. These are:
 
 - $request, required. Which request need to make. Supported values: get, post, put, patch, delete.
 - $url, required. Where to make request
