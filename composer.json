@@ -16,5 +16,10 @@
     "require": {
         "php": ">=7.4"
     },
+    "autoload": {
+        "psr-4": {
+            "Shewa\\WP_HTTP_Client\\": "wp-http-client/"
+        }
+    },
     "license": "BSD-3-Clause"
 }

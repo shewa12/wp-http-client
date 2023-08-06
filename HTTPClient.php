@@ -4,7 +4,7 @@
  *
  * Makes HTTP requests using the WordPress API.
  *
- * @package Shewa\WP\HTTPClient
+ * @package Shewa\WP_HTTP_Client
  * @author  shewa<shewa12kpi@gmail.com>
  * @link    https://shewazone.com
  * @since   1.0.0
