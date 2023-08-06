@@ -16,3 +16,105 @@ use Shewa\WP_HTTP_Client\HTTPClient;
 // Instantiate the HTTPClient class
 $http_client = new HTTPClient();
 ```
+
+## Supported HTTP Arguments & Default Values
+
+```
+		$defaults = array(
+			'method'              => 'GET',
+			'timeout'             => 5,
+			'redirection'         => 5,
+			'httpversion'         => 1.0,
+			'user-agent'          => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' )',
+			'reject_unsafe_urls'  => false,
+			'blocking'            => true,
+			'headers'             => array(),
+			'cookies'             => array(),
+			'body'                => null,
+			'compress'            => false,
+			'decompress'          => true,
+			'sslverify'           => true,
+			'sslcertificates'     => ABSPATH . WPINC . '/certificates/ca-bundle.crt',
+			'stream'              => false,
+			'filename'            => null,
+			'limit_response_size' => null,
+		);
+```
+
+## Methods
+- REQUEST
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
+
+#### Usage of GET Method
+
+This method performs a GET request to the specified URL.
+- $url (string): The URL to request.
+- $args (array): Optional. Arguments for the request, such as headers, timeout, etc. (Default: empty array)
+
+Example of using get() method:
+```
+    $url = 'https://api.example.com/data';
+    $response = $http_client->get( $url );
+
+    if ( ! is_wp_error( $response ) ) {
+        // Process the response data
+        print_r( $response );
+    } else {
+        // Handle the error
+        echo 'Error: ' . $response->get_error_message();
+    }
+
+```
+
+### Usage of POST, PUT, PATCH Method
+
+POST, PUT, PATCH method performs in a similar fashion.
+
+- $url (string): The URL to request.
+- $data (array): Data to be sent in the request body.
+- $args (array): Optional. Arguments for the request, such as headers, timeout, etc. (Default: empty array)
+
+Example of using post(), put(), patch() methods:
+```
+$url = 'https://api.example.com/update/123';
+$data = array(
+    'name' => 'Updated Name',
+);
+
+$response = $http_client->put( $url, $data );
+
+if ( ! is_wp_error( $response ) ) {
+    // Process the response data
+    print_r( $response );
+} else {
+    // Handle the error
+    echo 'Error: ' . $response->get_error_message();
+}
+
+```
+
+### Usage of DELETE Method
+
+- $url (string): The URL to request.
+- $args (array): Optional. Arguments for the request, such as headers, timeout, etc. (Default: empty array)
+
+Example of using delete() method:
+
+```
+$url = 'https://api.example.com/delete/123';
+
+$response = $http_client->delete( $url );
+
+if ( ! is_wp_error( $response ) ) {
+    // Process the response data
+    print_r( $response );
+} else {
+    // Handle the error
+    echo 'Error: ' . $response->get_error_message();
+}
+
+```
