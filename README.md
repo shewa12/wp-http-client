@@ -29,7 +29,7 @@ $http_client = new HTTPClient();
 - $args optional, pass to override default values
 
 Example of get request:
-```
+```php
     $url = 'https://api.example.com/data';
     $response = $http_client->request( 'get', $url );
 
@@ -44,7 +44,7 @@ Example of get request:
 ```
 
 Example of post request:
-```
+```php
     $url = 'https://api.example.com/data';
 	$data = ['name' => 'John'];
     $response = $http_client->request( 'post', $url, $data );
@@ -64,7 +64,7 @@ Example of post request:
 Response will be either WP_Error or Array. 
 
 Successful response will return array like below:
-```
+```php
 		$response = array(
 			'headers' => [],
 			'code'    => 200,
@@ -83,7 +83,7 @@ Successful response will return array like below:
 
 ## Supported HTTP Arguments & Default Values
 
-```
+```php
 		$defaults = array(
 			'method'              => 'GET',
 			'timeout'             => 5,
